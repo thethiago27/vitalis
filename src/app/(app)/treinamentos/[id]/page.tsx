@@ -20,8 +20,8 @@ import {
 import Link from 'next/link'
 import { Metadata } from 'next'
 
-export function generateMetadata({ params }: { params: { id: string } }): Metadata {
-  const trainingId = params.id
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const trainingId = (await params).id
   const training = trainingsData.find((t) => t.id === trainingId)
 
   if (!training) {
@@ -129,8 +129,15 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
   }
 }
 
-export default function TrainingDetailPage({ params }: { params: { id: string } }) {
-  const training = trainingsData.find((t) => t.id === params.id)
+export function generateStaticParams() {
+  return trainingsData.map((training) => ({
+    id: training.id,
+  }))
+}
+
+export default async function TrainingDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const trainingId = (await params).id
+  const training = trainingsData.find((t) => t.id === trainingId)
 
   if (!training) {
     notFound()

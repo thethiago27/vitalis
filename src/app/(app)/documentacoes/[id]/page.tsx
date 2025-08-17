@@ -23,8 +23,8 @@ import {
 import Link from 'next/link'
 import { Metadata } from 'next'
 
-export function generateMetadata({ params }: { params: { id: string } }): Metadata {
-  const documentId = params.id
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const documentId = (await params).id
   const document = documentsData.find((d) => d.id === documentId)
 
   if (!document) {
@@ -65,8 +65,14 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
   }
 }
 
-export default function DocumentDetailPage({ params }: { params: { id: string } }) {
-  const documentId = params.id
+export function generateStaticParams() {
+  return documentsData.map((document) => ({
+    id: document.id,
+  }))
+}
+
+export default async function DocumentDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const documentId = (await params).id
 
   const document = documentsData.find((d) => d.id === documentId)
 
