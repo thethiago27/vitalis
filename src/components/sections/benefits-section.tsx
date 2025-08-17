@@ -1,3 +1,5 @@
+'use client'
+
 import { CheckCircle, ShieldCheck, Target } from 'lucide-react'
 import { BenefitCard } from '@/components/cards/benefit-card'
 import { benefitsData } from '@/lib/data'

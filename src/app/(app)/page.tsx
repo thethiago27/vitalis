@@ -1,5 +1,3 @@
-'use client'
-
 import { Header } from './components/header'
 import { Values } from './components/values'
 import { Services } from './components/services'
@@ -16,13 +14,116 @@ import { ContactForm } from '@/components/forms/contact-form'
 import { Footer } from '@/components/layout/footer'
 import { ScrollToTop } from '@/components/ui/scroll-to-top'
 import { heroData } from '@/lib/data'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://vitalisseguranca.com.br'),
+  title: {
+    default: 'Vitalis SSHO - Soluções em Segurança e Saúde Ocupacional',
+    template: '%s | Vitalis SSHO',
+  },
+  description:
+    'Especialistas em SST: Treinamentos NRs, Documentação Legal e Consultoria em Segurança e Saúde Ocupacional. Empresas que valorizam a vida confiam na Vitalis SSHO.',
+  keywords: [
+    'segurança do trabalho',
+    'saúde ocupacional',
+    'treinamentos NRs',
+    'CIPA',
+    'documentação SST',
+    'consultoria SST',
+    'prevenção de acidentes',
+    'compliance trabalhista',
+    'treinamento segurança',
+    'NR 05',
+    'NR 10',
+    'NR 35',
+    'primeiros socorros',
+    'equipamentos proteção individual',
+    'espaços confinados',
+    'trabalho altura',
+    'prevenção incêndio',
+    'ergonomia',
+    'laudo técnico',
+    'programa PCMSO',
+    'programa PGR',
+    'São Paulo',
+    'Brasil',
+  ],
+  authors: [{ name: 'Vitalis SSHO' }],
+  creator: 'Vitalis SSHO',
+  publisher: 'Vitalis SSHO',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'pt_BR',
+    url: 'https://vitalisseguranca.com.br',
+    siteName: 'Vitalis SSHO',
+    title: 'Vitalis SSHO - Soluções em Segurança e Saúde Ocupacional',
+    description:
+      'Especialistas em SST: Treinamentos NRs, Documentação Legal e Consultoria em Segurança e Saúde Ocupacional. Empresas que valorizam a vida confiam na Vitalis SSHO.',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Vitalis SSHO - Segurança e Saúde Ocupacional',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Vitalis SSHO - Soluções em Segurança e Saúde Ocupacional',
+    description:
+      'Especialistas em SST: Treinamentos NRs, Documentação Legal e Consultoria em Segurança e Saúde Ocupacional.',
+    images: ['/og-image.jpg'],
+    creator: '@vitalisssho',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://vitalisseguranca.com.br',
+    languages: {
+      'pt-BR': 'https://vitalisseguranca.com.br',
+    },
+  },
+  category: 'Business',
+  classification: 'Business Services',
+  other: {
+    'geo.region': 'BR-SP',
+    'geo.placename': 'São Paulo',
+    'geo.position': '-23.5505;-46.6333',
+    ICBM: '-23.5505, -46.6333',
+    'DC.title': 'Vitalis SSHO - Soluções em Segurança e Saúde Ocupacional',
+    'DC.description':
+      'Especialistas em SST: Treinamentos NRs, Documentação Legal e Consultoria em Segurança e Saúde Ocupacional',
+    'DC.subject': 'Segurança do Trabalho, Saúde Ocupacional, Treinamentos NRs, Consultoria SST',
+    'DC.creator': 'Vitalis SSHO',
+    'DC.publisher': 'Vitalis SSHO',
+    'DC.contributor': 'Vitalis SSHO',
+    'DC.date': '2024',
+    'DC.type': 'Service',
+    'DC.format': 'text/html',
+    'DC.identifier': 'https://vitalisseguranca.com.br',
+    'DC.language': 'pt-BR',
+    'DC.coverage': 'Brasil',
+    'DC.rights': 'Copyright 2024 Vitalis SSHO',
+  },
+}
 
 export default function Home() {
-  const handleHeroCta = () => {
-    // Scroll para seção de contato
-    document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
     <>
       {/* Schema.org Structured Data */}
@@ -101,12 +202,7 @@ export default function Home() {
           <Header />
 
           {/* Hero Section */}
-          <Hero
-            title={heroData.title}
-            subtitle={heroData.subtitle}
-            ctaText={heroData.ctaText}
-            onCtaClick={handleHeroCta}
-          />
+          <Hero title={heroData.title} subtitle={heroData.subtitle} ctaText={heroData.ctaText} />
 
           {/* Estatísticas */}
           <StatsSection />

@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import { DocumentItem } from '@/components/cards/document-item'
 import { documentsData } from '@/lib/data'

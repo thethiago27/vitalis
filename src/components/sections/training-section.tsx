@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import { TrainingItem } from '@/components/cards/training-item'
 import { trainingsData } from '@/lib/data'

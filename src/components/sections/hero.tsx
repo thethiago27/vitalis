@@ -1,14 +1,21 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import { designSystem } from '@/lib/design-system'
+import { useEffect } from 'react'
 
 interface HeroProps {
   title: string
   subtitle: string
   ctaText: string
-  onCtaClick?: () => void
 }
 
-export function Hero({ title, subtitle, ctaText, onCtaClick }: HeroProps) {
+export function Hero({ title, subtitle, ctaText }: HeroProps) {
+  const handleCtaClick = () => {
+    // Scroll para seção de contato
+    document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       {/* Background com gradiente animado */}
@@ -52,7 +59,7 @@ export function Hero({ title, subtitle, ctaText, onCtaClick }: HeroProps) {
           {/* Botão CTA moderno */}
           <Button
             className="group relative transform rounded-full bg-white px-8 py-4 text-lg font-semibold text-blue-600 shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-blue-500/25"
-            onClick={onCtaClick}
+            onClick={handleCtaClick}
             style={{
               background: 'rgba(255, 255, 255, 0.95)',
               backdropFilter: 'blur(20px)',

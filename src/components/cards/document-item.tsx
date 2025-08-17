@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 interface DocumentItemProps {
   name: string
 }
@@ -8,11 +10,11 @@ export function DocumentItem({ name }: DocumentItemProps) {
       {/* Background gradiente sutil no hover */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 to-indigo-50/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-      <div className="relative z-10">
+      <Link href={`/documentacoes/${name}`} className="relative z-10">
         <span className="text-sm font-medium text-gray-700 transition-colors duration-300 group-hover:text-gray-900">
           {name}
         </span>
-      </div>
+      </Link>
 
       {/* Linha decorativa */}
       <div className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 transform bg-gradient-to-r from-blue-400 to-purple-400 transition-transform duration-300 group-hover:scale-x-100" />

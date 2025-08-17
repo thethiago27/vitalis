@@ -1,3 +1,5 @@
+'use client'
+
 import { ValueItem } from '@/components/value-item'
 import { companyValues } from '@/lib/data'
 
