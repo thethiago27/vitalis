@@ -9,6 +9,7 @@
 
 # production
 /build
+.history/
 
 # debug
 npm-debug.log*

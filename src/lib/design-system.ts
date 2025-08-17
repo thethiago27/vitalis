@@ -1,0 +1,152 @@
+export const designSystem = {
+  colors: {
+    primary: {
+      50: '#eff6ff',
+      100: '#dbeafe',
+      200: '#bfdbfe',
+      300: '#93c5fd',
+      400: '#60a5fa',
+      500: '#3b82f6',
+      600: '#2563eb',
+      700: '#1d4ed8',
+      800: '#1e40af',
+      900: '#1e3a8a',
+      950: '#172554'
+    },
+    secondary: {
+      50: '#f8fafc',
+      100: '#f1f5f9',
+      200: '#e2e8f0',
+      300: '#cbd5e1',
+      400: '#94a3b8',
+      500: '#64748b',
+      600: '#475569',
+      700: '#334155',
+      800: '#1e293b',
+      900: '#0f172a',
+      950: '#020617'
+    },
+    accent: {
+      50: '#fef7ee',
+      100: '#fdedd6',
+      200: '#fbd7ad',
+      300: '#f8bb84',
+      400: '#f5955b',
+      500: '#f26f32',
+      600: '#e8541f',
+      700: '#c13e1a',
+      800: '#9a321c',
+      900: '#7c2d1a',
+      950: '#42140a'
+    }
+  },
+  gradients: {
+    primary: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    secondary: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    accent: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+    hero: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
+    card: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
+    glass: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)'
+  },
+  shadows: {
+    sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+    lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+    '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+    inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+    glow: '0 0 20px rgba(102, 126, 234, 0.3)',
+    'glow-lg': '0 0 40px rgba(102, 126, 234, 0.4)'
+  },
+  borderRadius: {
+    none: '0',
+    sm: '0.125rem',
+    md: '0.375rem',
+    lg: '0.5rem',
+    xl: '0.75rem',
+    '2xl': '1rem',
+    '3xl': '1.5rem',
+    full: '9999px'
+  },
+  spacing: {
+    xs: '0.5rem',
+    sm: '1rem',
+    md: '1.5rem',
+    lg: '2rem',
+    xl: '3rem',
+    '2xl': '4rem',
+    '3xl': '6rem'
+  },
+  typography: {
+    fontSizes: {
+      xs: '0.75rem',
+      sm: '0.875rem',
+      base: '1rem',
+      lg: '1.125rem',
+      xl: '1.25rem',
+      '2xl': '1.5rem',
+      '3xl': '1.875rem',
+      '4xl': '2.25rem',
+      '5xl': '3rem',
+      '6xl': '3.75rem'
+    },
+    fontWeights: {
+      light: '300',
+      normal: '400',
+      medium: '500',
+      semibold: '600',
+      bold: '700',
+      extrabold: '800',
+      black: '900'
+    },
+    lineHeights: {
+      none: '1',
+      tight: '1.25',
+      snug: '1.375',
+      normal: '1.5',
+      relaxed: '1.625',
+      loose: '2'
+    }
+  },
+  animations: {
+    transition: {
+      fast: '150ms ease-in-out',
+      normal: '300ms ease-in-out',
+      slow: '500ms ease-in-out'
+    },
+    keyframes: {
+      fadeIn: 'fadeIn 0.5s ease-in-out',
+      slideUp: 'slideUp 0.5s ease-out',
+      slideDown: 'slideDown 0.5s ease-out',
+      scaleIn: 'scaleIn 0.3s ease-out',
+      bounce: 'bounce 1s infinite'
+    }
+  }
+}
+
+export const modernStyles = {
+  glass: {
+    background: 'rgba(255, 255, 255, 0.1)',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(255, 255, 255, 0.2)',
+    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+  },
+  card: {
+    background: 'rgba(255, 255, 255, 0.95)',
+    backdropFilter: 'blur(20px)',
+    border: '1px solid rgba(255, 255, 255, 0.3)',
+    boxShadow: designSystem.shadows.lg
+  },
+  button: {
+    primary: {
+      background: designSystem.gradients.primary,
+      boxShadow: designSystem.shadows.glow,
+      transition: 'all 0.3s ease'
+    },
+    secondary: {
+      background: 'rgba(255, 255, 255, 0.1)',
+      border: '1px solid rgba(255, 255, 255, 0.3)',
+      backdropFilter: 'blur(10px)'
+    }
+  }
+}
