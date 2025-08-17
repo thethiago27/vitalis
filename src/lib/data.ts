@@ -9,7 +9,7 @@ export const companyInfo = {
   },
   contact: {
     phone: '(11) 99254-1052',
-    email: 'comercial.01@vitalisssho.org',
+    email: 'comercial@vitalisseguranca.com.br',
   },
   socialMedia: [
     { name: 'Instagram', href: '#' },
@@ -44,6 +44,7 @@ export const benefitsData = [
   },
 ]
 
+// Dados básicos de treinamentos (para compatibilidade)
 export const trainingsData = [
   { name: 'CIPAMIN', hours: '40h' },
   { name: 'Noções de Primeiros Socorros', hours: '2h' },

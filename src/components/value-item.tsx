@@ -1,5 +1,3 @@
-import { companyValues } from '@/lib/data'
-
 interface ValueItemProps {
   title: string
   description: string

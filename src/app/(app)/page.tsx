@@ -11,20 +11,13 @@ import { DocumentsSection } from '@/components/sections/documents-section'
 import { AboutSection } from '@/components/sections/about-section'
 import { StatsSection } from '@/components/sections/stats-section'
 import { ProcessTimeline } from '@/components/sections/process-timeline'
-import { TestimonialsSection } from '@/components/sections/testimonials-section'
 import { FAQSection } from '@/components/sections/faq-section'
-import { NewsletterSection } from '@/components/sections/newsletter-section'
 import { ContactForm } from '@/components/forms/contact-form'
 import { Footer } from '@/components/layout/footer'
 import { ScrollToTop } from '@/components/ui/scroll-to-top'
 import { heroData } from '@/lib/data'
 
 export default function Home() {
-  const handleContactSubmit = (data: any) => {
-    console.log('Form data:', data)
-    // Implementar lógica de envio do formulário
-  }
-
   const handleHeroCta = () => {
     // Scroll para seção de contato
     document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })
@@ -58,7 +51,7 @@ export default function Home() {
               '@type': 'ContactPoint',
               telephone: '+55-11-99254-1052',
               contactType: 'customer service',
-              email: 'comercial.01@vitalisssho.org',
+              email: 'comercial@vitalisseguranca.com.br',
               availableLanguage: 'Portuguese',
             },
             sameAs: ['https://instagram.com/vitalisssho', 'https://wa.me/5511992541052'],
@@ -169,18 +162,14 @@ export default function Home() {
             <DocumentsSection />
           </Section>
 
-          {/* Depoimentos */}
-          <TestimonialsSection />
-
           {/* FAQ */}
           <FAQSection />
 
           {/* Newsletter */}
-          <NewsletterSection />
 
           {/* Contato */}
           <Section id="contato" title="Entre em contato" background="dark" variant="centered">
-            <ContactForm onSubmit={handleContactSubmit} />
+            <ContactForm />
           </Section>
         </main>
 

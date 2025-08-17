@@ -69,7 +69,7 @@ export function TestimonialsSection() {
     }, 5000)
 
     return () => clearInterval(interval)
-  }, [isAutoPlaying, testimonials.length])
+  }, [isAutoPlaying])
 
   const goToNext = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length)

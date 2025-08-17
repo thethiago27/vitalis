@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
@@ -8,7 +10,15 @@ export function Header() {
   const links = [
     {
       label: 'Início',
-      href: '#inicio',
+      href: '/',
+    },
+    {
+      label: 'Treinamentos',
+      href: '/treinamentos',
+    },
+    {
+      label: 'Documentos',
+      href: '/documentacoes',
     },
     {
       label: 'Serviços',
@@ -17,14 +27,6 @@ export function Header() {
     {
       label: 'Sobre',
       href: '#sobre',
-    },
-    {
-      label: 'Treinamentos',
-      href: '#treinamentos',
-    },
-    {
-      label: 'Documentos',
-      href: '#documentos',
     },
     {
       label: 'Contato',
@@ -50,7 +52,7 @@ export function Header() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="#inicio" className="group">
+          <Link href="/" className="group">
             <h1
               className={`text-2xl font-bold transition-all duration-300 ${
                 isScrolled ? 'bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent' : 'text-white'

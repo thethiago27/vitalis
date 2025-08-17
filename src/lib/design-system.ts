@@ -11,7 +11,7 @@ export const designSystem = {
       700: '#1d4ed8',
       800: '#1e40af',
       900: '#1e3a8a',
-      950: '#172554'
+      950: '#172554',
     },
     secondary: {
       50: '#f8fafc',
@@ -24,7 +24,7 @@ export const designSystem = {
       700: '#334155',
       800: '#1e293b',
       900: '#0f172a',
-      950: '#020617'
+      950: '#020617',
     },
     accent: {
       50: '#fef7ee',
@@ -37,8 +37,8 @@ export const designSystem = {
       700: '#c13e1a',
       800: '#9a321c',
       900: '#7c2d1a',
-      950: '#42140a'
-    }
+      950: '#42140a',
+    },
   },
   gradients: {
     primary: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
@@ -46,7 +46,7 @@ export const designSystem = {
     accent: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
     hero: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
     card: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
-    glass: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)'
+    glass: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
   },
   shadows: {
     sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
@@ -56,7 +56,7 @@ export const designSystem = {
     '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
     inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
     glow: '0 0 20px rgba(102, 126, 234, 0.3)',
-    'glow-lg': '0 0 40px rgba(102, 126, 234, 0.4)'
+    'glow-lg': '0 0 40px rgba(102, 126, 234, 0.4)',
   },
   borderRadius: {
     none: '0',
@@ -66,7 +66,7 @@ export const designSystem = {
     xl: '0.75rem',
     '2xl': '1rem',
     '3xl': '1.5rem',
-    full: '9999px'
+    full: '9999px',
   },
   spacing: {
     xs: '0.5rem',
@@ -75,7 +75,7 @@ export const designSystem = {
     lg: '2rem',
     xl: '3rem',
     '2xl': '4rem',
-    '3xl': '6rem'
+    '3xl': '6rem',
   },
   typography: {
     fontSizes: {
@@ -88,7 +88,7 @@ export const designSystem = {
       '3xl': '1.875rem',
       '4xl': '2.25rem',
       '5xl': '3rem',
-      '6xl': '3.75rem'
+      '6xl': '3.75rem',
     },
     fontWeights: {
       light: '300',
@@ -97,7 +97,7 @@ export const designSystem = {
       semibold: '600',
       bold: '700',
       extrabold: '800',
-      black: '900'
+      black: '900',
     },
     lineHeights: {
       none: '1',
@@ -105,23 +105,23 @@ export const designSystem = {
       snug: '1.375',
       normal: '1.5',
       relaxed: '1.625',
-      loose: '2'
-    }
+      loose: '2',
+    },
   },
   animations: {
     transition: {
       fast: '150ms ease-in-out',
       normal: '300ms ease-in-out',
-      slow: '500ms ease-in-out'
+      slow: '500ms ease-in-out',
     },
     keyframes: {
       fadeIn: 'fadeIn 0.5s ease-in-out',
       slideUp: 'slideUp 0.5s ease-out',
       slideDown: 'slideDown 0.5s ease-out',
       scaleIn: 'scaleIn 0.3s ease-out',
-      bounce: 'bounce 1s infinite'
-    }
-  }
+      bounce: 'bounce 1s infinite',
+    },
+  },
 }
 
 export const modernStyles = {
@@ -129,24 +129,24 @@ export const modernStyles = {
     background: 'rgba(255, 255, 255, 0.1)',
     backdropFilter: 'blur(10px)',
     border: '1px solid rgba(255, 255, 255, 0.2)',
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
   },
   card: {
     background: 'rgba(255, 255, 255, 0.95)',
     backdropFilter: 'blur(20px)',
     border: '1px solid rgba(255, 255, 255, 0.3)',
-    boxShadow: designSystem.shadows.lg
+    boxShadow: designSystem.shadows.lg,
   },
   button: {
     primary: {
       background: designSystem.gradients.primary,
       boxShadow: designSystem.shadows.glow,
-      transition: 'all 0.3s ease'
+      transition: 'all 0.3s ease',
     },
     secondary: {
       background: 'rgba(255, 255, 255, 0.1)',
       border: '1px solid rgba(255, 255, 255, 0.3)',
-      backdropFilter: 'blur(10px)'
-    }
-  }
+      backdropFilter: 'blur(10px)',
+    },
+  },
 }

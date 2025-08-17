@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://vitalisssho.org'
+  const baseUrl = 'https://vitalisseguranca.com.br'
 
   return [
     {
@@ -11,19 +11,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/#treinamentos`,
+      url: `${baseUrl}/treinamentos`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/#documentos`,
+      url: `${baseUrl}/documentacoes`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/#contato`,
+      url: `${baseUrl}/contato`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,

@@ -17,7 +17,7 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://vitalisssho.org'),
+  metadataBase: new URL('https://vitalisseguranca.com.br'),
   title: {
     default: 'Vitalis SSHO - Soluções em Segurança e Saúde Ocupacional',
     template: '%s | Vitalis SSHO',
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://vitalisssho.org',
+    url: 'https://vitalisseguranca.com.br',
     siteName: 'Vitalis SSHO',
     title: 'Vitalis SSHO - Soluções em Segurança e Saúde Ocupacional',
     description:
@@ -94,9 +94,9 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://vitalisssho.org',
+    canonical: 'https://vitalisseguranca.com.br',
     languages: {
-      'pt-BR': 'https://vitalisssho.org',
+      'pt-BR': 'https://vitalisseguranca.com.br',
     },
   },
   category: 'Business',
@@ -116,7 +116,7 @@ export const metadata: Metadata = {
     'DC.date': '2024',
     'DC.type': 'Service',
     'DC.format': 'text/html',
-    'DC.identifier': 'https://vitalisssho.org',
+    'DC.identifier': 'https://vitalisseguranca.com.br',
     'DC.language': 'pt-BR',
     'DC.coverage': 'Brasil',
     'DC.rights': 'Copyright 2024 Vitalis SSHO',
@@ -127,8 +127,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR">
       <head>
-        <link rel="canonical" href="https://vitalisssho.org" />
-        <link rel="alternate" hrefLang="pt-BR" href="https://vitalisssho.org" />
+        <link rel="canonical" href="https://vitalisseguranca.com.br" />
+        <link rel="alternate" hrefLang="pt-BR" href="https://vitalisseguranca.com.br" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

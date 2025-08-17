@@ -19,7 +19,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/admin/', '/_next/'],
       },
     ],
-    sitemap: 'https://vitalisssho.org/sitemap.xml',
-    host: 'https://vitalisssho.org',
+    sitemap: 'https://vitalisseguranca.com.br/sitemap.xml',
+    host: 'https://vitalisseguranca.com.br',
   }
 }
