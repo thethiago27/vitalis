@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import { ChevronUp } from 'lucide-react'
+import { useMixpanel } from '@/lib/use-mixpanel'
 
 export function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false)
+  const { trackCustom } = useMixpanel()
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -20,6 +22,14 @@ export function ScrollToTop() {
   }, [])
 
   const scrollToTop = () => {
+    // Rastrear clique no botão scroll to top
+    trackCustom('Scroll to Top Click', {
+      location: 'Scroll to Top Button',
+      scroll_position: window.pageYOffset,
+      page_height: document.documentElement.scrollHeight,
+      viewport_height: window.innerHeight,
+    })
+    
     window.scrollTo({
       top: 0,
       behavior: 'smooth',

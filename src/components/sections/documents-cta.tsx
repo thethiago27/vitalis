@@ -1,4 +1,41 @@
+'use client'
+
+import { useMixpanel } from '@/lib/use-mixpanel'
+import { companyInfo } from '@/lib/data'
+
 export function DocumentsCTA() {
+  const { trackCTA } = useMixpanel()
+
+  const handleWhatsAppClick = () => {
+    // Rastrear clique no CTA do WhatsApp
+    trackCTA('Documents WhatsApp CTA', 'Documents CTA', {
+      page: 'Documents',
+      contact_method: 'whatsapp',
+      phone_number: companyInfo.contact.phone,
+    })
+    
+    // Abrir WhatsApp
+    window.open(companyInfo.contact.whatsapp, '_blank')
+  }
+
+  const handlePhoneClick = () => {
+    // Rastrear clique no telefone
+    trackCTA('Documents Phone CTA', 'Documents CTA', {
+      page: 'Documents',
+      contact_method: 'phone',
+      phone_number: companyInfo.contact.phone,
+    })
+  }
+
+  const handleEmailClick = () => {
+    // Rastrear clique no email
+    trackCTA('Documents Email CTA', 'Documents CTA', {
+      page: 'Documents',
+      contact_method: 'email',
+      email: companyInfo.contact.email,
+    })
+  }
+
   return (
     <section className="relative overflow-hidden py-20">
       {/* Background com gradiente */}
@@ -20,17 +57,28 @@ export function DocumentsCTA() {
           </p>
 
           <div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
+            <button
+              onClick={handleWhatsAppClick}
+              className="group inline-flex transform items-center justify-center rounded-2xl bg-white px-8 py-4 font-semibold text-blue-600 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+            >
+              <span className="mr-2">💬</span>
+              <span>Fale conosco</span>
+              <div className="ml-2 h-5 w-5 rounded-full bg-blue-600 transition-transform duration-300 group-hover:scale-110" />
+            </button>
+
             <a
               href="tel:+5511992541052"
-              className="group inline-flex transform items-center justify-center rounded-2xl bg-white px-8 py-4 font-semibold text-blue-600 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              onClick={handlePhoneClick}
+              className="group inline-flex transform items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/20"
             >
               <span className="mr-2">📞</span>
               <span>Ligar agora</span>
-              <div className="ml-2 h-5 w-5 rounded-full bg-blue-600 transition-transform duration-300 group-hover:scale-110" />
+              <div className="ml-2 h-5 w-5 rounded-full bg-white transition-transform duration-300 group-hover:scale-110" />
             </a>
 
             <a
               href="mailto:comercial.01@vitalisssho.org"
+              onClick={handleEmailClick}
               className="group inline-flex transform items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/20"
             >
               <span className="mr-2">✉️</span>

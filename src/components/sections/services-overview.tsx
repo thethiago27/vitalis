@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { Shield, FileText, Users, Target, CheckCircle, ArrowRight } from 'lucide-react'
+import { useMixpanel } from '@/lib/use-mixpanel'
+import { companyInfo } from '@/lib/data'
 
 interface Service {
   id: number
@@ -73,6 +75,7 @@ const services: Service[] = [
 
 export function ServicesOverview() {
   const [activeService, setActiveService] = useState(1)
+  const { trackCTA } = useMixpanel()
 
   return (
     <section className="relative overflow-hidden py-20">
@@ -198,6 +201,18 @@ export function ServicesOverview() {
                       {/* CTA */}
                       <div className="pt-6">
                         <button
+                          onClick={() => {
+                            // Rastrear clique no CTA
+                            trackCTA('Service Quote CTA', 'Services Overview', {
+                              service_name: service.title,
+                              page: 'Home',
+                              contact_method: 'whatsapp',
+                              phone_number: companyInfo.contact.phone,
+                            })
+                            
+                            // Abrir WhatsApp
+                            window.open(companyInfo.contact.whatsapp, '_blank')
+                          }}
                           className={`group relative w-full bg-gradient-to-r px-6 py-4 ${service.color} transform rounded-2xl font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl`}
                         >
                           <span className="relative z-10 flex items-center justify-center">
@@ -216,12 +231,25 @@ export function ServicesOverview() {
 
         {/* CTA adicional */}
         <div className="mt-16 text-center">
-          <div className="inline-flex transform items-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
+          <button
+            onClick={() => {
+              // Rastrear clique no CTA adicional
+              trackCTA('Expert Contact CTA', 'Services Overview', {
+                page: 'Home',
+                contact_method: 'whatsapp',
+                phone_number: companyInfo.contact.phone,
+              })
+              
+              // Abrir WhatsApp
+              window.open(companyInfo.contact.whatsapp, '_blank')
+            }}
+            className="inline-flex transform items-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+          >
             <span>Fale com nossos especialistas</span>
             <svg className="ml-2 h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
-          </div>
+          </button>
         </div>
       </div>
     </section>

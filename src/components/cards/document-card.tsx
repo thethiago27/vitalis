@@ -6,9 +6,10 @@ import Link from 'next/link'
 
 interface DocumentCardProps {
   document: Document
+  onClick?: () => void
 }
 
-export function DocumentCard({ document }: DocumentCardProps) {
+export function DocumentCard({ document, onClick }: DocumentCardProps) {
   const getCategoryColor = (category: string) => {
     switch (category) {
       case 'Obrigatória':

@@ -7,9 +7,10 @@ import { Document } from '@/lib/documents'
 interface DocumentsGridProps {
   documents: Document[]
   onClearFilters: () => void
+  onDocumentInteraction?: (action: string, documentName: string) => void
 }
 
-export function DocumentsGrid({ documents, onClearFilters }: DocumentsGridProps) {
+export function DocumentsGrid({ documents, onClearFilters, onDocumentInteraction }: DocumentsGridProps) {
   if (documents.length === 0) {
     return (
       <section className="relative overflow-hidden py-20">
@@ -64,7 +65,10 @@ export function DocumentsGrid({ documents, onClearFilters }: DocumentsGridProps)
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {documents.map((document, index) => (
               <div key={document.id} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
-                <DocumentCard document={document} />
+                <DocumentCard 
+                  document={document} 
+                  onClick={() => onDocumentInteraction?.('view_details', document.name)}
+                />
               </div>
             ))}
           </div>

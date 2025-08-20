@@ -5,15 +5,16 @@ import Link from 'next/link'
 interface TrainingItemProps {
   name: string
   hours: string
+  id: string
 }
 
-export function TrainingItem({ name, hours }: TrainingItemProps) {
+export function TrainingItem({ name, hours, id }: TrainingItemProps) {
   return (
     <div className="group relative transform overflow-hidden rounded-xl border border-blue-100/50 bg-gradient-to-r from-blue-50 to-indigo-50 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100/50">
       {/* Background gradiente sutil no hover */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-100/30 to-purple-100/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-      <Link href={`/treinamentos/${name}`} className="relative z-10 flex items-center justify-between">
+      <Link href={`/treinamentos/${id}`} className="relative z-10 flex items-center justify-between">
         <span className="text-sm font-medium text-gray-700 transition-colors duration-300 group-hover:text-gray-900">
           {name}
         </span>

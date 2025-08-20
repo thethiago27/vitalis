@@ -399,7 +399,7 @@ export const documentsData: Document[] = [
       'Redução de custos',
       'Melhoria da segurança',
     ],
-    deliveryTime: '20-30 dias úteis',
+    deliveryTime: '2-3 dias úteis',
     validity: 'Anual ou quando houver mudanças',
     category: 'Recomendada',
     includes: [

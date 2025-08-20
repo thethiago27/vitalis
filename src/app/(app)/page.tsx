@@ -10,6 +10,7 @@ import { AboutSection } from '@/components/sections/about-section'
 import { StatsSection } from '@/components/sections/stats-section'
 import { ProcessTimeline } from '@/components/sections/process-timeline'
 import { FAQSection } from '@/components/sections/faq-section'
+import { PartnersSection } from '@/components/sections/partners-section'
 import { ContactForm } from '@/components/forms/contact-form'
 import { Footer } from '@/components/layout/footer'
 import { ScrollToTop } from '@/components/ui/scroll-to-top'
@@ -256,6 +257,17 @@ export default function Home() {
             variant="centered"
           >
             <DocumentsSection />
+          </Section>
+
+          {/* Empresas Parceiras */}
+          <Section
+            id="parceiros"
+            title="Empresas Parceiras"
+            subtitle="Empresas que confiam na Vitalis SSHO"
+            background="white"
+            variant="centered"
+          >
+            <PartnersSection />
           </Section>
 
           {/* FAQ */}

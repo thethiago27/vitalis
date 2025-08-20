@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { Header } from '../../components/header'
+import { Footer } from '@/components/layout/footer'
 import { trainingsData } from '@/lib/trainings'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -565,6 +566,8 @@ export default async function TrainingDetailPage({ params }: { params: Promise<{
           </div>
         </section>
       </main>
+
+      <Footer />
 
       <ScrollToTop />
     </div>

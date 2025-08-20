@@ -3,9 +3,10 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react'
+import { useMixpanel } from '@/lib/use-mixpanel'
 
 export function ContactForm() {
-  const [isSubmitted] = useState(true)
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -14,10 +15,35 @@ export function ContactForm() {
     company: '',
     message: '',
   })
+  
+  const { trackForm, trackCTA } = useMixpanel()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    // Rastrear envio do formulário
+    trackForm('Contact Form', {
+      form_type: 'contact',
+      has_company: !!formData.company,
+      has_phone: !!formData.phone,
+      message_length: formData.message.length,
+      page: 'Contact Section',
+    })
+    
+    // Simular envio
+    setIsSubmitted(true)
+  }
+
+  const handleContactClick = (contactType: string) => {
+    trackCTA(`Contact ${contactType}`, 'Contact Section', {
+      contact_type: contactType,
+      page: 'Contact Section',
+    })
   }
 
   const inputClasses =
@@ -60,7 +86,12 @@ export function ContactForm() {
             </div>
             <div>
               <h4 className="mb-1 font-semibold text-white">Email</h4>
-              <p className="text-blue-200">comercial@vitalisseguranca.com.br</p>
+              <button 
+                onClick={() => handleContactClick('Email')}
+                className="text-blue-200 hover:text-white transition-colors"
+              >
+                comercial@vitalisseguranca.com.br
+              </button>
             </div>
           </div>
 
@@ -70,7 +101,12 @@ export function ContactForm() {
             </div>
             <div>
               <h4 className="mb-1 font-semibold text-white">Telefone</h4>
-              <p className="text-blue-200">(11) 99999-9999</p>
+              <button 
+                onClick={() => handleContactClick('Phone')}
+                className="text-blue-200 hover:text-white transition-colors"
+              >
+                (11) 99999-9999
+              </button>
             </div>
           </div>
 
@@ -108,7 +144,7 @@ export function ContactForm() {
 
       {/* Formulário */}
       <div className="lg:col-span-2">
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="space-y-3">
               <label htmlFor="firstName" className={labelClasses}>

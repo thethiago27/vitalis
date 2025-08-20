@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { CheckCircle, ArrowRight, Clock, Users, FileText, Target, TrendingUp } from 'lucide-react'
+import { useMixpanel } from '@/lib/use-mixpanel'
+import { companyInfo } from '@/lib/data'
 
 interface ProcessStep {
   id: number
@@ -59,6 +61,7 @@ const processSteps: ProcessStep[] = [
 export function ProcessTimeline() {
   const [activeStep, setActiveStep] = useState(1)
   const [hoveredStep, setHoveredStep] = useState<number | null>(null)
+  const { trackCTA } = useMixpanel()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -234,10 +237,23 @@ export function ProcessTimeline() {
 
         {/* CTA */}
         <div className="mt-20 text-center">
-          <div className="inline-flex transform cursor-pointer items-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
+          <button
+            onClick={() => {
+              // Rastrear clique no CTA
+              trackCTA('Process Start CTA', 'Process Timeline', {
+                page: 'Home',
+                contact_method: 'whatsapp',
+                phone_number: companyInfo.contact.phone,
+              })
+              
+              // Abrir WhatsApp
+              window.open(companyInfo.contact.whatsapp, '_blank')
+            }}
+            className="inline-flex transform cursor-pointer items-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+          >
             <span>Comece Agora</span>
             <ArrowRight className="ml-2 h-6 w-6 transition-transform duration-300 group-hover:translate-x-1" />
-          </div>
+          </button>
           <p className="mt-4 text-sm text-gray-500">Entre em contato e inicie sua transformação em segurança</p>
         </div>
       </div>

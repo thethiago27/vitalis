@@ -2,7 +2,9 @@
 
 import { Button } from '@/components/ui/button'
 import { designSystem } from '@/lib/design-system'
+import { useMixpanel } from '@/lib/use-mixpanel'
 import { useEffect } from 'react'
+import { companyInfo } from '@/lib/data'
 
 interface HeroProps {
   title: string
@@ -11,13 +13,40 @@ interface HeroProps {
 }
 
 export function Hero({ title, subtitle, ctaText }: HeroProps) {
+  const { trackCTA, trackSection } = useMixpanel()
+
   const handleCtaClick = () => {
-    // Scroll para seção de contato
-    document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })
+    // Rastrear clique no CTA
+    trackCTA('Hero CTA', 'Hero Section', {
+      cta_text: ctaText,
+      page: 'Home',
+      contact_method: 'whatsapp',
+      phone_number: companyInfo.contact.phone,
+    })
+    
+    // Se for "Fale conosco", abrir WhatsApp, senão scroll para contato
+    if (ctaText.toLowerCase().includes('fale conosco')) {
+      window.open(companyInfo.contact.whatsapp, '_blank')
+    } else {
+      document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
+  // Rastrear visualização da seção Hero
+  useEffect(() => {
+    trackSection('Hero Section', {
+      page: 'Home',
+      title: title,
+      subtitle: subtitle,
+    })
+  }, [trackSection, title, subtitle])
+
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section 
+      className="relative flex min-h-screen items-center justify-center overflow-hidden"
+      data-section="Hero Section"
+      id="hero"
+    >
       {/* Background com gradiente animado */}
       <div
         className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500"

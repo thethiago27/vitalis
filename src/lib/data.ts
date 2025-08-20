@@ -10,10 +10,11 @@ export const companyInfo = {
   contact: {
     phone: '(11) 99254-1052',
     email: 'comercial@vitalisseguranca.com.br',
+    whatsapp: 'https://wa.me/5511992541052',
   },
   socialMedia: [
-    { name: 'Instagram', href: '#' },
-    { name: 'WhatsApp', href: '#' },
+    { name: 'Instagram', href: 'https://instagram.com/vitalisssho' },
+    { name: 'WhatsApp', href: 'https://wa.me/5511992541052' },
   ],
 }
 

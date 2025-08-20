@@ -2,16 +2,17 @@ import Link from 'next/link'
 
 interface DocumentItemProps {
   name: string
+  id: string
 }
 
-export function DocumentItem({ name }: DocumentItemProps) {
+export function DocumentItem({ name, id }: DocumentItemProps) {
   return (
     <div className="group relative transform overflow-hidden rounded-xl border border-gray-100 bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100/50">
       {/* Background gradiente sutil no hover */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 to-indigo-50/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-      <Link href={`/documentacoes/${name}`} className="relative z-10">
-        <span className="text-sm font-medium text-gray-700 transition-colors duration-300 group-hover:text-gray-900">
+      <Link href={`/documentacoes/${id}`} className="relative z-10">
+        <span className="text-sm font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-900">
           {name}
         </span>
       </Link>

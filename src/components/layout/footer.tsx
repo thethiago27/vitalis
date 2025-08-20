@@ -3,8 +3,26 @@
 import { Mail, MapPin, Phone } from 'lucide-react'
 import Link from 'next/link'
 import { companyInfo } from '@/lib/data'
+import { useMixpanel } from '@/lib/use-mixpanel'
 
 export function Footer() {
+  const { trackExternal, trackCustom } = useMixpanel()
+
+  const handleExternalLink = (linkUrl: string, linkText: string, linkType: string) => {
+    trackExternal(linkUrl, linkText, {
+      location: 'Footer',
+      link_type: linkType,
+    })
+  }
+
+  const handleContactClick = (contactType: string, contactValue: string) => {
+    trackCustom('Footer Contact Click', {
+      contact_type: contactType,
+      contact_value: contactValue,
+      location: 'Footer',
+    })
+  }
+
   return (
     <footer className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 text-white">
       {/* Decoração de fundo */}
@@ -47,17 +65,23 @@ export function Footer() {
                 <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-r from-green-500 to-blue-500 transition-transform duration-300 group-hover:scale-110">
                   <Phone className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-blue-100 transition-colors duration-300 group-hover:text-white">
+                <button
+                  onClick={() => handleContactClick('phone', companyInfo.contact.phone)}
+                  className="text-blue-100 transition-colors duration-300 hover:text-white"
+                >
                   {companyInfo.contact.phone}
-                </span>
+                </button>
               </div>
               <div className="group flex items-center space-x-3">
                 <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-r from-pink-500 to-purple-500 transition-transform duration-300 group-hover:scale-110">
                   <Mail className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-blue-100 transition-colors duration-300 group-hover:text-white">
+                <button
+                  onClick={() => handleContactClick('email', companyInfo.contact.email)}
+                  className="text-blue-100 transition-colors duration-300 hover:text-white"
+                >
                   {companyInfo.contact.email}
-                </span>
+                </button>
               </div>
             </div>
           </div>
@@ -70,6 +94,7 @@ export function Footer() {
                 <Link
                   key={social.name}
                   href={social.href}
+                  onClick={() => handleExternalLink(social.href, social.name, 'social_media')}
                   className="group flex transform items-center space-x-3 rounded-lg border border-white/10 bg-white/5 p-3 transition-all duration-300 hover:scale-105 hover:border-white/20 hover:bg-white/10"
                 >
                   <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 transition-transform duration-300 group-hover:scale-110">
@@ -89,10 +114,18 @@ export function Footer() {
           <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
             <p className="text-blue-100">&copy; 2025 {companyInfo.name}. Todos os direitos reservados.</p>
             <div className="flex space-x-6">
-              <Link href="#" className="text-blue-100 transition-colors duration-300 hover:text-white hover:underline">
+              <Link 
+                href="#" 
+                onClick={() => handleExternalLink('#', 'Política de Privacidade', 'legal')}
+                className="text-blue-100 transition-colors duration-300 hover:text-white hover:underline"
+              >
                 Política de Privacidade
               </Link>
-              <Link href="#" className="text-blue-100 transition-colors duration-300 hover:text-white hover:underline">
+              <Link 
+                href="#" 
+                onClick={() => handleExternalLink('#', 'Termos e Condições', 'legal')}
+                className="text-blue-100 transition-colors duration-300 hover:text-white hover:underline"
+              >
                 Termos e Condições
               </Link>
             </div>

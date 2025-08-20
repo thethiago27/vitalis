@@ -2,6 +2,8 @@
 
 import { Card, CardContent } from '@/components/ui/card'
 import { Shield, Users, FileText, TrendingUp, Clock, Award } from 'lucide-react'
+import { useMixpanel } from '@/lib/use-mixpanel'
+import { useEffect } from 'react'
 
 const services = [
   {
@@ -43,8 +45,31 @@ const services = [
 ]
 
 export function Services() {
+  const { trackSection, trackCustom } = useMixpanel()
+
+  // Rastrear visualização da seção
+  useEffect(() => {
+    trackSection('Services Section', {
+      page: 'Home',
+      total_services: services.length,
+      services_list: services.map(s => s.title),
+    })
+  }, [trackSection])
+
+  const handleServiceHover = (serviceTitle: string) => {
+    trackCustom('Service Hover', {
+      service_title: serviceTitle,
+      page: 'Home',
+      location: 'Services Section',
+    })
+  }
+
   return (
-    <section className="bg-gradient-to-br from-gray-50 to-blue-50 py-20">
+    <section 
+      className="bg-gradient-to-br from-gray-50 to-blue-50 py-20"
+      data-section="Services Section"
+      id="servicos"
+    >
       <div className="container mx-auto px-4">
         {/* Cabeçalho da seção */}
         <div className="mb-16 text-center">
@@ -66,6 +91,7 @@ export function Services() {
             <Card
               key={service.title}
               className="group relative transform overflow-hidden border-0 bg-white/80 shadow-lg backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl"
+              onMouseEnter={() => handleServiceHover(service.title)}
             >
               {/* Background gradiente sutil */}
               <div
@@ -98,32 +124,12 @@ export function Services() {
                 </h3>
 
                 {/* Descrição */}
-                <p className="leading-relaxed text-gray-600 transition-colors duration-300 group-hover:text-gray-700">
+                <p className="text-gray-600 leading-relaxed">
                   {service.description}
                 </p>
-
-                {/* Indicador de hover */}
-                <div
-                  className={`absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r ${service.color} origin-left scale-x-0 transform transition-transform duration-500 group-hover:scale-x-100`}
-                />
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        {/* CTA adicional */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex transform items-center rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
-            <span>Conheça todos os nossos serviços</span>
-            <svg
-              className="ml-2 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </div>
         </div>
       </div>
     </section>

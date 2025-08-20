@@ -2,10 +2,27 @@
 
 import { ValueItem } from '@/components/value-item'
 import { companyValues } from '@/lib/data'
+import { useMixpanel } from '@/lib/use-mixpanel'
+import { useEffect } from 'react'
 
 export function Values() {
+  const { trackSection } = useMixpanel()
+
+  // Rastrear visualização da seção
+  useEffect(() => {
+    trackSection('Values Section', {
+      page: 'Home',
+      total_values: companyValues.length,
+      values_list: companyValues.map(v => v.title),
+    })
+  }, [trackSection])
+
   return (
-    <section className="bg-white py-20">
+    <section 
+      className="bg-white py-20"
+      data-section="Values Section"
+      id="sobre"
+    >
       <div className="container mx-auto px-4">
         {/* Cabeçalho da seção */}
         <div className="mb-16 text-center">
