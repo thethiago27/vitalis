@@ -2,6 +2,7 @@ import { Inter, Poppins } from 'next/font/google'
 import type React from 'react'
 import './globals.css'
 import { MixpanelProvider } from '@/components/providers/mixpanel-provider'
+import { Analytics } from '@vercel/analytics/next'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -40,9 +41,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
       </head>
       <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
-        <MixpanelProvider>
-          {children}
-        </MixpanelProvider>
+        <MixpanelProvider>{children}</MixpanelProvider>
+        <Analytics />
       </body>
     </html>
   )
