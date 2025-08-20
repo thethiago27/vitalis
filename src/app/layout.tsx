@@ -3,6 +3,7 @@ import type React from 'react'
 import './globals.css'
 import { MixpanelProvider } from '@/components/providers/mixpanel-provider'
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
         <MixpanelProvider>{children}</MixpanelProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
