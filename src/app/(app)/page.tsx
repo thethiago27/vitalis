@@ -68,7 +68,7 @@ export const metadata: Metadata = {
       'Especialistas em SST: Treinamentos NRs, Documentação Legal e Consultoria em Segurança e Saúde Ocupacional. Empresas que valorizam a vida confiam na Vitalis SSHO.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/placeholder.jpg',
         width: 1200,
         height: 630,
         alt: 'Vitalis SSHO - Segurança e Saúde Ocupacional',
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     title: 'Vitalis SSHO - Soluções em Segurança e Saúde Ocupacional',
     description:
       'Especialistas em SST: Treinamentos NRs, Documentação Legal e Consultoria em Segurança e Saúde Ocupacional.',
-    images: ['/og-image.jpg'],
+    images: ['/placeholder.jpg'],
     creator: '@vitalisssho',
   },
   robots: {
@@ -138,9 +138,9 @@ export default function Home() {
             alternateName: 'Vitalis Segurança e Saúde Ocupacional',
             description:
               'Especialistas em SST: Treinamentos NRs, Documentação Legal e Consultoria em Segurança e Saúde Ocupacional',
-            url: 'https://vitalisssho.org',
-            logo: 'https://vitalisssho.org/logo.png',
-            image: 'https://vitalisssho.org/og-image.jpg',
+            url: 'https://vitalisseguranca.com.br',
+            logo: 'https://vitalisseguranca.com.br/placeholder-logo.png',
+            image: 'https://vitalisseguranca.com.br/placeholder.jpg',
             address: {
               '@type': 'PostalAddress',
               streetAddress: 'Av. Paulista, 777, sala 102, parte 946, Bela Vista',
